@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveForce = 10f;
     public int n = 0;
     public TextMeshPro nDisplay;
 
@@ -17,16 +17,16 @@ public class PlayerController : MonoBehaviour
         UpdateDisplay();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        float moveX = Input.GetAxis("Horizontal"); // A/D or ←/→
-        float moveZ = Input.GetAxis("Vertical");   // W/S or ↑/↓
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveX, 0f, moveZ);
-        rb.MovePosition(transform.position + movement * moveSpeed * Time.deltaTime);
+
+        rb.AddForce(movement * moveForce);
     }
 
-    // 値を代入する処理（外部から呼べる）
     public void SetN(int newValue)
     {
         n = newValue;
