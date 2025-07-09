@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public void SetN(int newValue)
     {
         n = newValue;
+        nDisplay.text = "n = " + n;
         UpdateDisplay();
     }
 
